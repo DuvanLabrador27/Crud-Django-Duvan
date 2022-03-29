@@ -1,0 +1,41 @@
+{%  extends "base.html" %}
+
+{% block title %} Lista de libros {% endblock %}
+
+{% block contenido %}  
+    <div class="card mt-3   ">
+        <div class="card-header">
+           <a name="" id="" class="btn btn-success" href="{% url 'crearLibros' %}" role="button">Agregar Libro</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Libros</h4>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Titulo</th>
+                      <th>Imagen</th>
+                      <th>Descripción</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+
+                  <tr>
+        
+                      <td>1</td>
+                      <td>Crud con Django</td>
+                      <td>imagen.jpg</td>
+                      <td>Esto es un libro...</td>
+                      <td>Editar | Eliminar</td>
+                    
+
+                  </tr>
+
+              </tbody>
+          </table>
+          
+
+        </div>
+    </div>
+{% endblock %}
