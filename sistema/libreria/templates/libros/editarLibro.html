@@ -1,7 +1,16 @@
 {%  extends "base.html" %}
 
-{% block title %} Editar Libros {% endblock %}
+{% block title %} Editar Libro {% endblock %}
 
 {% block contenido %}  
-Sección de Editar
+    <div class="card mt-3">
+        <div class="card-header">
+            Editar Un Libro
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Datos de un libro</h4>
+           {% include 'libros/formulario.html' %}
+        </div>
+       
+    </div>
 {% endblock %}
