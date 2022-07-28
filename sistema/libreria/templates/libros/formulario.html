@@ -1,9 +1,36 @@
 <form enctype="multipart/form-data" method="post">
-
+  {% csrf_token %}
+    {% for campo in formulario %}
     <div class="mb-3">
-      <label for="" class="form-label">Nombre: </label>
-      <input type="text"
-        class="form-control" name="" id=""  placeholder="Nombre">
-    </div>
+      <label for="" class="form-label"> <b> {{ campo.label }}: </b> </label>
+      <!--Verificar si el tipo de campo es file, entonces muestra la imagen para editar -->
 
-</form>
+      {% if campo.field.widget.input_type == 'file' and campo.value %}
+        <br>
+        <img src="{{MEDIA_URL}}/imagenes/{{campo.value}}" height="100" alt="" srcset="">
+        <br>
+
+      {% endif %}
+        
+      <!--campo variable recorrida, field tipo de campo -->
+      <input
+      type="{{ campo.field.widget.input_type }}"
+      class="form-control"
+      name="{{ campo.name }}"
+      id=""  
+      placeholder="{{ campo.label }}"
+      value="{{ campo.value | default:'' }}"
+      >
+    
+      
+
+    </div>
+   
+    <div class="col-12 help-text">
+      {{campo.errors}}
+    </div>
+    {% endfor %}
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar Informacion">
+    <a name="" id="" class="btn btn-primary" href="{% url 'libros' %}" role="button">Cancelar</a>
+  </form>
